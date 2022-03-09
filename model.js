@@ -2,32 +2,24 @@
 // Implémenter ici les 4 classes du modèle.
 // N'oubliez pas l'héritage !
 function Drawing() {
-
-	this.array = new Array();
-
-
+	this.shapeArray = new Map();
 };
 
-function Forme (color, width) {
+function Shape (initX, initY, thickness, color) {
+    this.initX = initX;
+    this.initY = initY;
     this.color = color;
-    this.initX = initX;
+    this.thickness = thickness;
 };
 
-function Rectangle (initX, initY, largeur, hauteur, color, width) {
-    Forme.call(color, width);
-    this.initX = initX;
-    this.initY = initY;
-    this.largeur = largeur;
-    this.hauteur = hauteur;
+function Rectangle (initX, initY, thickness, color, height, width) {
+    Shape.call(this, initX, initY, thickness, color);
+    this.height = height;
+    this.width = width;
 };
-Rectangle.prototype = new Forme();
 
-
-function Ligne (initX, initY, finalX, finalY, color, width) {
-    Forme.call(color, width);
-    this.initX = initX;
-    this.initY = initY;
+function Line (initX, initY, thickness, color, finalX, finalY) {
+    Shape.call(this, initX, initY, thickness, color);
     this.finalX = finalX;
     this.finalY = finalY;
 };
-Ligne.prototype = new Forme();
