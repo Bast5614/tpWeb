@@ -9,8 +9,13 @@ function DnD(canvas, interactor) {
     this.finalY = 0;
     this.isClicked = false;
 	// Developper les 3 fonctions gérant les événements
+	this.interactor = interactor;
     this.clic = function (evt) {
+            var position = getMousePosition(canvas,evt);
+            this.initX = position.x;
+            this.initY = position.y;
             this.isClicked = true;
+            this.interactor.onInteractionStart(this);
     }.bind(this);
 
     this.deplace = function (evt) {
@@ -18,12 +23,17 @@ function DnD(canvas, interactor) {
             var position = getMousePosition(canvas,evt);
             this.finalX = position.x;
             this.finalY = position.y;
-            console.log(evt);
+            //console.log(evt);
+            this.interactor.onInteractionUpdate(this);
         }
     }.bind(this);
 
     this.deClic = function (evt) {
         this.isClicked = false;
+        var position = getMousePosition(canvas,evt);
+        this.finalX = position.x;
+        this.finalY = position.y;
+        this.interactor.onInteractionEnd(this);
     }.bind(this);
 
 	// Associer les fonctions précédentes aux évènements du canvas.

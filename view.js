@@ -16,7 +16,7 @@ Line.prototype.paint = function(ctx) {
 };
 
 Drawing.prototype.paint = function(ctx) {
-  console.log(this.shapeArray);
+  //console.log(this.shapeArray);
   ctx.fillStyle = '#F0F0F0'; // set canvas' background color
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   this.shapeArray.forEach(element => element.paint(ctx))

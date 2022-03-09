@@ -2,7 +2,7 @@
 // Implémenter ici les 4 classes du modèle.
 // N'oubliez pas l'héritage !
 function Drawing() {
-	this.shapeArray = new Map();
+	this.shapeArray = [];
 };
 
 function Shape (initX, initY, thickness, color) {
